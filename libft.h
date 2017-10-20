@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 17:04:48 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/17 21:44:12 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/19 20:26:01 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int					**ft_2dintnew(int rows, int cols);
 char				**ft_2dstrnew(int lines, int chars);
 
 void				ft_bzero(void *src, size_t n);
+
+int					*ft_intnew(int size);
 
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 

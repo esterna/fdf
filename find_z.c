@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_exit.c                                         :+:      :+:    :+:   */
+/*   find_z.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 22:20:14 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/19 16:19:19 by esterna          ###   ########.fr       */
+/*   Created: 2017/10/19 22:07:58 by esterna           #+#    #+#             */
+/*   Updated: 2017/10/19 22:47:14 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void			fdf_exit(t_frame *frame, int i)
+void					find_z_vals(t_frame *frame)
 {
-	ft_free_array((void **)frame->map, frame->map_size[1] + 1);
-	ft_memdel((void **)&frame->map_size);
-	if (i == 0)
-		ft_putstr_fd("Error\n", 2);
-	if (frame->window != NULL)
-		mlx_destroy_window(frame->mlx, frame->window);
-	free(frame);
-	exit(0);
+	int			z_vals[2];
+	int			x;
+	int			y;
+
+	z_vals[0] = 0;
+	z_vals[1] = 0;
+	y = 0;
+	while (y < frame->map_size[1])
+	{
+		x = 0;
+		while (x < frame->map_size[0])
+		{
+			if (frame->map[y][x] > z_vals[0])
+				z_vals[0] = frame->map[y][x];
+			if (frame->map[y][x] < z_vals[1])
+				z_vals[1] = frame->map[y][x];
+			x++;
+		}
+		y++;
+	}
+	frame->z_vals = z_vals;
 }
